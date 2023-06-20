@@ -1,4 +1,5 @@
 Summary:	Tools for accessing and modifying guest disk images
+Summary(pl.UTF-8):	Narzędzia służące do dostępu i modyfikowania obrazów dysków gości
 Name:		guestfs-tools
 Version:	1.50.1
 Release:	1
@@ -16,14 +17,14 @@ BuildRequires:	jansson-devel >= 2.7
 BuildRequires:	libguestfs-devel >= 1.49.8
 BuildRequires:	libosinfo-devel
 BuildRequires:	libvirt-devel >= 0.10.2
-BuildRequires:	libxml2-devel
-BuildRequires:	libxml2-progs
+BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	libxml2-progs >= 2.0
 BuildRequires:	ncurses-devel
-BuildRequires:	ocaml >= 4.04
+BuildRequires:	ocaml >= 1:4.04
 BuildRequires:	ocaml-camlp4
 BuildRequires:	ocaml-findlib
 BuildRequires:	ocaml-gettext-devel
-BuildRequires:	ocaml-libguestfs-devel
+BuildRequires:	ocaml-libguestfs-devel >= 1.49.8
 BuildRequires:	pcre2-8-devel
 BuildRequires:	perl-Module-Build
 BuildRequires:	perl-base
@@ -44,23 +45,37 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Guestfs-tools contains tools for accessing and modifying guest disk
 images.
 
+%description -l pl.UTF-8
+Pakiet guestfs-tools zawiera narzędzia służące do dostępu i
+modyfikowania obrazów dysków gości.
+
 %package virt-win-reg
 Summary:	Access and modify the Windows Registry of a Windows VM
+Summary(pl.UTF-8):	Dostęp i modyfikowanie Rejestru Windows na maszynie wirtualnej
+Group:		Applications/System
 BuildArch:	noarch
 
 %description virt-win-reg
 Virt-win-reg lets you look at and modify the Windows Registry of
 Windows virtual machines.
 
+%description virt-win-reg -l pl.UTF-8
+Virt-win-reg pozwala przeglądać i modyfikować Rejestr Windows maszyn
+wirtualnych Windows.
+
 %package -n bash-completion-guestfs-tools
-Summary:	bash-completion for guestfs-tools
+Summary:	Bash completion for guestfs-tools
+Summary(pl.UTF-8):	Bashowe dopełnianie poleceń guestfs-tools
 Group:		Applications/Shells
 Requires:	%{name} = %{version}-%{release}
 Requires:	bash-completion >= 1:2.0
 BuildArch:	noarch
 
 %description -n bash-completion-guestfs-tools
-bash-completion for guestfs-tools.
+Bash completion for guestfs-tools.
+
+%description -n bash-completion-guestfs-tools
+Bashowe dopełnianie poleceń guestfs-tools.
 
 %prep
 %setup -q
@@ -115,6 +130,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/virt-sparsify
 %attr(755,root,root) %{_bindir}/virt-sysprep
 %attr(755,root,root) %{_bindir}/virt-tail
+# examples for virt-inspector
+%{_docdir}/guestfs-tools
+%{_mandir}/man1/guestfs-tools-release-notes-1.48.1*
+%{_mandir}/man1/guestfs-tools-release-notes-1.50.1*
 %{_mandir}/man1/virt-alignment-scan.1*
 %{_mandir}/man1/virt-builder-repository.1*
 %{_mandir}/man1/virt-builder.1*
